@@ -1,0 +1,33 @@
+温度转换
+#TempConvert.py
+val = input("请输入带温度表示符号的温度值（例如：32C):")
+if val[-1] in ['C','c']:
+  f =1.8 * float(val[0:-1]) +32
+  print("转换后的温度为：%.2fF"%f)
+elif val[-1] in ['F','f']:
+  c = (float(val[0:-1])- 32) / 1.8
+  print(""转换后的温度为：%.2fC"%c)
+else:
+  print("输入有误")
+  
+绘制蟒蛇
+import turtle
+
+def drawSnake(rad, angle, len, neckrad):  #rad描述原型轨迹半径的位置，angle表示小乌龟沿着圆形爬行的弧度值
+    for i in range(len):
+        turtle.circle(rad, angle)
+        turtle.circle(-rad, angle)
+    turtle.circle(rad, angle/2)
+    turtle.fd(rad)#也可以称为 turtle.forword（）函数，表示小乌龟向前直线爬行，他有一个参数表示爬行的距离
+    turtle.circle(neckrad+1, 180)
+    turtle.fd(rad*2/3)
+    
+def main():
+    turtle.setup(1300, 800, 0, 0)
+    pythonsize = 30
+    turtle.pensize(pythonsize)#表示小乌龟运行轨迹的宽度
+    turtle.pencolor("blue")#运行颜色
+    turtle.seth(-40)#表示小乌龟启动时运行的方向，参数表示角度值（0向西，90向北，180向东，270向南，负值表示相反的方向）
+    drawSnake(40,80,5,pythonsize/2)
+    
+main()
